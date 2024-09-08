@@ -48,11 +48,11 @@ export default function ResumeSec({classN}){
             </div>
 
             <ol className="timeline-list">
-                <a target="_self"
-                            href={c7}
-                            download="khalid.jpg"></a>
+                
                 <li className="timeline-item">
-                    <h4 className="h4 timeline-item-title">Information Technology</h4>
+                    <h4 className="h4 timeline-item-title"><a target="_self"
+                            href={c7}
+                            download="khalid.jpg">Information Technology</a></h4>
 
                     <span>The National Ribat University</span>
 
