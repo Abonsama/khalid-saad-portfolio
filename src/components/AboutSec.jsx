@@ -13,7 +13,7 @@ export default function AboutSec({classN}){
                     transforming raw data into actionable insights that guide business growth rate.
                 </p>
 
-                <p>with bachelor`s degree in infomation technology, helping copanies make data driven decision making from reports and dashboards in power bi.</p>
+                <p>with bachelor`s degree in infomation technology, helping companies make data driven decision making from reports and dashboards in power bi.</p>
             </section>
             <section className="service">
                 <h3 className="h3 service-title">What i&apos;m doing</h3>
