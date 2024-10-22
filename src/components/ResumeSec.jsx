@@ -28,7 +28,7 @@ export default function ResumeSec({classN}){
             <ol className="timeline-list">
                 <li className="timeline-item">
                     <h4 className="h4 timeline-item-title">The National Ribat University</h4>
-                    <span>2017 — 2021</span>
+                    <span>2016 — 2021</span>
                     <p className="timeline-text">
                         Despite the challenging circumstances, which
                         interrupted my university studies, I pursued self-study in
@@ -66,8 +66,6 @@ export default function ResumeSec({classN}){
                             download="training.jpg">Advanced Data Analytics Online Bootcamp</a></h4>
 
                     <span>Pattern For Training</span>
-
-                    <span>2024</span>
                     
                 </li>
                 
@@ -77,8 +75,6 @@ export default function ResumeSec({classN}){
                             download="Coursera foundation.pdf">Foundations, Data, Data Everywhere</a></h4>
 
                     <span>Google Coursera</span>
-
-                    <span>2024</span>
                     
                 </li>
                 
@@ -88,8 +84,6 @@ export default function ResumeSec({classN}){
                             download="Prepare Data For Exploration.pdf">Prepare Data For Exploration</a></h4>
 
                     <span>Google Coursera</span>
-
-                    <span>2024</span>
                     
                 </li>
                 
@@ -99,8 +93,6 @@ export default function ResumeSec({classN}){
                             download="Ask Questions To Make Data Driven Decisions.pdf">Ask Questions To Make Data Driven Decisions</a></h4>
 
                     <span>Google Coursera</span>
-
-                    <span>2024</span>
                     
                 </li>
                 
@@ -110,8 +102,6 @@ export default function ResumeSec({classN}){
                             download="HR Analytics-Build HR Dashboard Using Power BI.pdf">HR Analytics-Build HR Dashboard Using Power BI</a></h4>
 
                     <span>Coursera</span>
-
-                    <span>2024</span>
                     
                 </li>
                 
@@ -121,8 +111,6 @@ export default function ResumeSec({classN}){
                             download="Creating Effective Dashboard.jpg">Creating Effective Dashboard</a></h4>
 
                     <span>UNICEF</span>
-
-                    <span>2024</span>
                     
                 </li>
                 
@@ -132,8 +120,6 @@ export default function ResumeSec({classN}){
                             download="Data Analysis.jpg">Data Analysis</a></h4>
 
                     <span>UNICEF</span>
-
-                    <span>2024</span>
                     
                 </li>
                 
@@ -143,8 +129,6 @@ export default function ResumeSec({classN}){
                             download="Data Analytics Bootcamp.jpg">Data Analytics Bootcamp</a></h4>
 
                     <span>Alexander Freberg</span>
-
-                    <span>2024</span>
                     
                 </li>
                 
@@ -154,8 +138,6 @@ export default function ResumeSec({classN}){
                             download="Presenting Data Visually.jpg">Presenting Data Visually</a></h4>
 
                     <span>UNICEF</span>
-
-                    <span>2024</span>
                     
                 </li>
                 
@@ -165,8 +147,6 @@ export default function ResumeSec({classN}){
                             download="Technical Tutorial - Basic Power BI For Infomation Managment.jpg">Technical Tutorial - Basic Power BI For Infomation Managment</a></h4>
 
                     <span>Global Nutrition Cluster & UNICEF</span>
-
-                    <span>2024</span>
                     
                 </li>
                 
@@ -174,11 +154,37 @@ export default function ResumeSec({classN}){
                     <h4 className="h4 timeline-item-title"><a target="_self"
                             href={c12}
                             download="UNICEF Supply Chain Maturity Model.jpg">UNICEF Supply Chain Maturity Model</a></h4>
-
                     <span>UNICEF</span>
-
-                    <span>2024</span>
-                    
+                </li>
+                <li className="timeline-item">
+                    <h4 className="h4 timeline-item-title"><a target="_self"
+                            href={c12}
+                            download="collating and cleaning data.pdf">collating and cleaning data</a></h4>
+                    <span>UNICEF</span>
+                </li>
+                <li className="timeline-item">
+                    <h4 className="h4 timeline-item-title"><a target="_self"
+                            href={c12}
+                            download="Collect-process-analyze-data_Module certificate.pdf">Collect-process-analyze-data_Module certificate</a></h4>
+                    <span>UNICEF</span>
+                </li>
+                <li className="timeline-item">
+                    <h4 className="h4 timeline-item-title"><a target="_self"
+                            href={c12}
+                            download="Business Analytics for Decision Making.pdf">Business Analytics for Decision Making</a></h4>
+                    <span>Coursera</span>
+                </li>
+                <li className="timeline-item">
+                    <h4 className="h4 timeline-item-title"><a target="_self"
+                            href={c12}
+                            download="Business Analysis Fundamentals.pdf">Business Analysis Fundamentals</a></h4>
+                    <span>Coursera</span>
+                </li>
+                <li className="timeline-item">
+                    <h4 className="h4 timeline-item-title"><a target="_self"
+                            href={c12}
+                            download="Extract, Transform and Load Data in Power BI.jpg">Extract, Transform and Load Data in Power BI</a></h4>
+                    <span>Coursera</span>
                 </li>
             </ol>
         </section>
