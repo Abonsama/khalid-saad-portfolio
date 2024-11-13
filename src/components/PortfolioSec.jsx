@@ -12,6 +12,7 @@ import hrFile from '../assets/HR.pbix';
 import sudan from '../assets/sudan displacment.pdf';
 import sudanFile from '../assets/sudan displacment.pbix';
 import goodFile from '../assets/goodread.pbix';
+import good from '../assets/good read.pdf';
 import './PreviewOverlay.css';
 
 export default function PortfolioSec({ classN }) {
@@ -22,7 +23,7 @@ export default function PortfolioSec({ classN }) {
         { title: 'Amazon Prime', category: 'Data Analysis', image: image2, file: amazon, downloadFile: amazonFile },
         { title: 'HR', category: 'Data Analysis', image: image4, file: hr, downloadFile: hrFile },
         { title: 'Sudan Displacement', category: 'Data Analysis', image: image1, file: sudan, downloadFile: sudanFile },
-        { title: 'Good Read', category: 'Data Analysis', image: image3, file: sudan, downloadFile: goodFile },
+        { title: 'Good Read', category: 'Data Analysis', image: image3, file: good, downloadFile: goodFile },
     ];
 
     const handlePreview = (file, downloadFile) => {
