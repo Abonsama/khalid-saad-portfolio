@@ -1,11 +1,35 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
-import image from '../assets/analytics.svg';
-import amazon from '../assets/amazon prime.pbix';
-import hr from '../assets/HR.pbix';
-import Sudan from '../assets/sudan displacment.pbix';
-import good from '../assets/goodread.pbix';
+import OpenPreview from './OpenPreview'; // Import OpenPreview component
+import image1 from '../assets/screenshot1.png';
+import image2 from '../assets/screenshot2.png';
+import image3 from '../assets/screenshot3.png';
+import image4 from '../assets/screenshot4.png';
+import amazon from '../assets/amazon prime.pdf';
+import amazonFile from '../assets/amazon prime.pbix';
+import hr from '../assets/HR.pdf';
+import hrFile from '../assets/HR.pbix';
+import sudan from '../assets/sudan displacment.pdf';
+import sudanFile from '../assets/sudan displacment.pbix';
+import goodFile from '../assets/goodread.pbix';
+import './PreviewOverlay.css';
 
 export default function PortfolioSec({ classN }) {
+    const [previewFile, setPreviewFile] = useState(null);
+    const [downloadFile, setDownloadFile] = useState(null);
+
+    const projects = [
+        { title: 'Amazon Prime', category: 'Data Analysis', image: image2, file: amazon, downloadFile: amazonFile },
+        { title: 'HR', category: 'Data Analysis', image: image4, file: hr, downloadFile: hrFile },
+        { title: 'Sudan Displacement', category: 'Data Analysis', image: image1, file: sudan, downloadFile: sudanFile },
+        { title: 'Good Read', category: 'Data Analysis', image: image3, file: sudan, downloadFile: goodFile },
+    ];
+
+    const handlePreview = (file, downloadFile) => {
+        setPreviewFile(file);
+        setDownloadFile(downloadFile);
+    };
+
     return (
         <article className={`portfolio ${classN}`} data-page="portfolio">
             <header>
@@ -13,110 +37,50 @@ export default function PortfolioSec({ classN }) {
             </header>
 
             <section className="projects">
-                <ul className="filter-list">
-                    <li className="filter-item">
-                        <button className="active" data-filter-btn>All</button>
-                    </li>
-                </ul>
                 <ul className="project-list">
-                    <li
-                        className="project-item active"
-                        data-filter-item
-                        data-category="Data Analysis"
-                    >
-                        <a
-                            target="_self"
-                            href={amazon}
-                            download="Amazon Prime.pbix"
-                        >
-                            <figure className="project-img">
-                                <div className="project-item-icon-box">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                </div>
-                                <img
-                                    src={image}
-                                    alt="Amazon Prime"
-                                    loading="lazy"
-                                />
-                            </figure>
-                            <h3 className="project-title">Amazon Prime.pbix</h3>
-                            <p className="project-category">Data Analysis</p>
-                        </a>
-                    </li>
-                    <li
-                        className="project-item active"
-                        data-filter-item
-                        data-category="Data Analysis"
-                    >
-                        <a
-                            target="_self"
-                            href={good}
-                            download="Good Read.pbix"
-                        >
-                            <figure className="project-img">
-                                <div className="project-item-icon-box">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                </div>
-                                <img
-                                    src={image}
-                                    alt="Good Read"
-                                    loading="lazy"
-                                />
-                            </figure>
-                            <h3 className="project-title">Good Read.pbix</h3>
-                            <p className="project-category">Data Analysis</p>
-                        </a>
-                    </li>
-                    <li
-                        className="project-item active"
-                        data-filter-item
-                        data-category="Data Analysis"
-                    >
-                        <a
-                            target="_self"
-                            href={hr}
-                            download="HR.pbix"
-                        >
-                            <figure className="project-img">
-                                <div className="project-item-icon-box">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                </div>
-                                <img
-                                    src={image}
-                                    alt="HR"
-                                    loading="lazy"
-                                />
-                            </figure>
-                            <h3 className="project-title">HR.pbix</h3>
-                            <p className="project-category">Data Analysis</p>
-                        </a>
-                    </li>
-                    <li
-                        className="project-item active"
-                        data-filter-item
-                        data-category="Data Analysis"
-                    >
-                        <a
-                            target="_self"
-                            href={Sudan}
-                            download="Sudan Displacement.pbix"
-                        >
-                            <figure className="project-img">
-                                <div className="project-item-icon-box">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                </div>
-                                <img
-                                    src={image}
-                                    alt="Sudan Displacement"
-                                    loading="lazy"
-                                />
-                            </figure>
-                            <h3 className="project-title">Sudan Displacement.pbix</h3>
-                            <p className="project-category">Data Analysis</p>
-                        </a>
-                    </li>
+                    {projects.map((project, index) => (
+                        <li key={index} className="project-item active" data-filter-item data-category={project.category}>
+                            <div onClick={() => handlePreview(project.file, project.downloadFile)} style={{ cursor: 'pointer' }}>
+                                <figure className="project-img">
+                                    <div className="project-item-icon-box">
+                                        <ion-icon name="eye-outline"></ion-icon>
+                                    </div>
+                                    <img src={project.image} alt={project.title} loading="lazy" />
+                                </figure>
+                                <h3 className="project-title">{project.title}</h3>
+                                <p className="project-category">{project.category}</p>
+                            </div>
+                        </li>
+                    ))}
                 </ul>
             </section>
+
+            {/* Conditionally render OpenPreview with blur effect */}
+            {previewFile && (
+                <div className="preview-overlay">
+                    <div className="preview-modal">
+                        <OpenPreview file={previewFile} />
+                        <div className="button-container">
+                            <button className="close-button" onClick={() => setPreviewFile(null)}>
+                                Close Preview
+                            </button>
+                            <button 
+    className="download-button" 
+    onClick={() => {
+        const link = document.createElement('a');
+        link.href = downloadFile;
+        // Decode URI component and replace %20 with spaces
+        link.download = decodeURIComponent(downloadFile.split('/').pop());
+        link.click();
+    }}
+>
+    Download
+</button>
+
+                        </div>
+                    </div>
+                </div>
+            )}
         </article>
     );
 }

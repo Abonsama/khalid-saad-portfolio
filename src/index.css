@@ -560,19 +560,20 @@ main {
   padding: 0 10px;
 }
 
-.navbar-link >*{
-  color: var(--light-gray);
+.navbar-link {
+  color: var(--light-gray); /* Apply color to Link directly */
   font-size: var(--fs-8);
   padding: 20px 7px;
   transition: color var(--transition-1);
+  text-decoration: none; /* Remove underline */
 }
 
-.navbar-link >*:hover,
-.navbar-link >*:focus {
+.navbar-link:hover,
+.navbar-link:focus {
   color: var(--light-gray-70);
 }
 
-.navbar-link.active>*{
+.navbar-link.active {
   color: var(--orange-yellow-crayola);
 }
 

@@ -5,67 +5,63 @@ import PortfolioSec from './PortfolioSec';
 import ResumeSec from './ResumeSec';
 
 export default function Main() {
-    // State to track the active button
     const [activeButton, setActiveButton] = useState('about');
-
-    // Get the current location from react-router
     const location = useLocation();
 
     useEffect(() => {
-        // Update the active button based on the current route
-        if (location.pathname === '/') {
+        if (location.pathname === '/khalid-saad-portfolio/') {
             setActiveButton('about');
-        } else if (location.pathname === '/PortfolioSec') {
+        } else if (location.pathname === '/khalid-saad-portfolio/PortfolioSec') {
             setActiveButton('portfolio');
-        } else if (location.pathname === '/ResumeSec') {
+        } else if (location.pathname === '/khalid-saad-portfolio/ResumeSec') {
             setActiveButton('resume');
         }
-    }, [location.pathname]); // Re-run when pathname changes
+    }, [location.pathname]);
 
     return (
         <div className="main-content">
             <nav className="navbar">
                 <ul className="navbar-list">
                     <li className="navbar-item">
-                        <button
-                            onClick={() => setActiveButton('about')}
+                        <Link
+                            to="/khalid-saad-portfolio/"
                             className={`navbar-link ${activeButton === 'about' ? 'active' : ''}`}
                             data-nav-link
                         >
-                            <Link to="/">About</Link>
-                        </button>
+                            About
+                        </Link>
                     </li>
                     <li className="navbar-item">
-                        <button
-                            onClick={() => setActiveButton('resume')}
+                        <Link
+                            to="/khalid-saad-portfolio/ResumeSec"
                             className={`navbar-link ${activeButton === 'resume' ? 'active' : ''}`}
                             data-nav-link
                         >
-                            <Link to="/ResumeSec">Resume</Link>
-                        </button>
+                            Resume
+                        </Link>
                     </li>
                     <li className="navbar-item">
-                        <button
-                            onClick={() => setActiveButton('portfolio')}
+                        <Link
+                            to="/khalid-saad-portfolio/PortfolioSec"
                             className={`navbar-link ${activeButton === 'portfolio' ? 'active' : ''}`}
                             data-nav-link
                         >
-                            <Link to="/PortfolioSec">Portfolio</Link>
-                        </button>
+                            Portfolio
+                        </Link>
                     </li>
                 </ul>
             </nav>
             <Routes>
                 <Route
-                    path="/"
+                    path="/khalid-saad-portfolio/"
                     element={<AboutSec classN={activeButton === 'about' ? 'active' : ''} />}
                 />
                 <Route
-                    path="/PortfolioSec"
+                    path="/khalid-saad-portfolio/PortfolioSec"
                     element={<PortfolioSec classN={activeButton === 'portfolio' ? 'active' : ''} />}
                 />
                 <Route
-                    path="/ResumeSec"
+                    path="/khalid-saad-portfolio/ResumeSec"
                     element={<ResumeSec classN={activeButton === 'resume' ? 'active' : ''} />}
                 />
             </Routes>

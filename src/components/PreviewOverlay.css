@@ -1,0 +1,41 @@
+/* PreviewOverlay.css */
+
+.preview-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.preview-modal {
+    background: hsl(240, 2%, 12%);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    margin-top: 15px;
+}
+
+.close-button, .download-button {
+    padding: 8px 16px;
+    border: none;
+    background-image: linear-gradient(to right, hsl(45, 100%, 72%), hsl(35, 100%, 68%));
+    color: rgba(0, 0, 0, 0.6);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
