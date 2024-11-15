@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import OpenPreview from './OpenPreview';
+import './PreviewOverlay.css'; // Import the CSS for preview modal and overlay
+
 import c1 from '../assets/alex.jpg';
 import c2 from '../assets/Coursera ask.pdf';
 import c3 from '../assets/Coursera foundation.pdf';
@@ -14,25 +17,34 @@ import c11 from '../assets/unipre.jpg';
 import c12 from '../assets/unisupply.jpg';
 
 export default function ResumeSec({ classN }) {
+    const [previewFile, setPreviewFile] = useState(null);
+
     const certificates = [
-        { title: 'Information Technology', institution: 'The National Ribat University', year: '2017 — 2021', file: c7, fileName: 'khalid.jpg' },
-        { title: 'Advanced Data Analytics Online Bootcamp', institution: 'Pattern For Training', year: '', file: c8, fileName: 'training.jpg' },
-        { title: 'Foundations, Data, Data Everywhere', institution: 'Google Coursera', year: '', file: c3, fileName: 'Coursera foundation.pdf' },
-        { title: 'Prepare Data For Exploration', institution: 'Google Coursera', year: '', file: c5, fileName: 'Prepare Data For Exploration.pdf' },
-        { title: 'Ask Questions To Make Data Driven Decisions', institution: 'Google Coursera', year: '', file: c2, fileName: 'Ask Questions To Make Data Driven Decisions.pdf' },
-        { title: 'HR Analytics-Build HR Dashboard Using Power BI', institution: 'Coursera', year: '', file: c4, fileName: 'HR Analytics-Build HR Dashboard Using Power BI.pdf' },
-        { title: 'Creating Effective Dashboard', institution: 'UNICEF', year: '', file: c9, fileName: 'Creating Effective Dashboard.jpg' },
-        { title: 'Data Analysis', institution: 'UNICEF', year: '', file: c10, fileName: 'Data Analysis.jpg' },
-        { title: 'Data Analytics Bootcamp', institution: 'Alexander Freberg', year: '', file: c1, fileName: 'Data Analytics Bootcamp.jpg' },
-        { title: 'Presenting Data Visually', institution: 'UNICEF', year: '', file: c11, fileName: 'Presenting Data Visually.jpg' },
-        { title: 'Technical Tutorial - Basic Power BI For Information Management', institution: 'Global Nutrition Cluster & UNICEF', year: '', file: c6, fileName: 'Technical Tutorial - Basic Power BI For Information Management.jpg' },
-        { title: 'UNICEF Supply Chain Maturity Model', institution: 'UNICEF', year: '', file: c12, fileName: 'UNICEF Supply Chain Maturity Model.jpg' },
-        { title: 'Collating and Cleaning Data', institution: 'UNICEF', year: '', file: c12, fileName: 'Collating and Cleaning Data.pdf' },
-        { title: 'Collect-process-analyze-data Module Certificate', institution: 'UNICEF', year: '', file: c12, fileName: 'Collect-process-analyze-data_Module certificate.pdf' },
-        { title: 'Business Analytics for Decision Making', institution: 'Coursera', year: '', file: c12, fileName: 'Business Analytics for Decision Making.pdf' },
-        { title: 'Business Analysis Fundamentals', institution: 'Coursera', year: '', file: c12, fileName: 'Business Analysis Fundamentals.pdf' },
-        { title: 'Extract, Transform and Load Data in Power BI', institution: 'Coursera', year: '', file: c12, fileName: 'Extract, Transform and Load Data in Power BI.jpg' },
+        { title: 'Information Technology', institution: 'The National Ribat University', year: '2017 — 2021', file: c7 },
+        { title: 'Advanced Data Analytics Online Bootcamp', institution: 'Pattern For Training', year: '', file: c8 },
+        { title: 'Foundations, Data, Data Everywhere', institution: 'Google Coursera', year: '', file: c3 },
+        { title: 'Prepare Data For Exploration', institution: 'Google Coursera', year: '', file: c5 },
+        { title: 'Ask Questions To Make Data Driven Decisions', institution: 'Google Coursera', year: '', file: c2 },
+        { title: 'HR Analytics-Build HR Dashboard Using Power BI', institution: 'Coursera', year: '', file: c4 },
+        { title: 'Creating Effective Dashboard', institution: 'UNICEF', year: '', file: c9 },
+        { title: 'Data Analysis', institution: 'UNICEF', year: '', file: c10 },
+        { title: 'Data Analytics Bootcamp', institution: 'Alexander Freberg', year: '', file: c1 },
+        { title: 'Presenting Data Visually', institution: 'UNICEF', year: '', file: c11 },
+        { title: 'Technical Tutorial - Basic Power BI For Information Management', institution: 'Global Nutrition Cluster & UNICEF', year: '', file: c6 },
+        { title: 'UNICEF Supply Chain Maturity Model', institution: 'UNICEF', year: '', file: c12 },
+        { title: 'Collating and Cleaning Data', institution: 'UNICEF', year: '', file: c12 },
+        { title: 'Collect-process-analyze-data Module Certificate', institution: 'UNICEF', year: '', file: c12 },
+        { title: 'Business Analytics for Decision Making', institution: 'Coursera', year: '', file: c12 },
+        { title: 'Business Analysis Fundamentals', institution: 'Coursera', year: '', file: c12 },
+        { title: 'Extract, Transform and Load Data in Power BI', institution: 'Coursera', year: '', file: c12 },
     ];
+
+    const handleDownload = (file, fileName) => {
+        const link = document.createElement('a');
+        link.href = file;
+        link.download = fileName;
+        link.click();
+    };
 
     return (
         <article className={`resume ${classN}`} data-page="resume">
@@ -51,10 +63,7 @@ export default function ResumeSec({ classN }) {
                         <h4 className="h4 timeline-item-title">The National Ribat University</h4>
                         <span>2016 — 2021</span>
                         <p className="timeline-text">
-                            Despite the challenging circumstances, which
-                            interrupted my university studies, I pursued self-study in
-                            Data analysis. I acquired strong adaptive and problem-solving
-                            skills.
+                            Despite challenging circumstances, I pursued self-study in Data analysis.
                         </p>
                     </li>
                 </ol>
@@ -69,17 +78,17 @@ export default function ResumeSec({ classN }) {
                 <ol className="timeline-list">
                     {certificates.map((cert, index) => (
                         <li key={index} className="timeline-item">
-                            <h4 className="h4 timeline-item-title">{cert.title}</h4>
+                            <h4
+                                className="h4 timeline-item-title"
+                                onClick={() => setPreviewFile(cert.file)}
+                                style={{ cursor: 'pointer'}}
+                            >
+                                {cert.title}
+                            </h4>
                             <span>{cert.institution}</span>
                             <span>{cert.year}</span>
-                            <OpenPreview file={cert.file} />
                             <button
-                                onClick={() => {
-                                    const link = document.createElement('a');
-                                    link.href = cert.file;
-                                    link.download = cert.fileName;
-                                    link.click();
-                                }}
+                                onClick={() => handleDownload(cert.file, cert.fileName)}
                                 className="download-button"
                             >
                                 Download
@@ -88,6 +97,16 @@ export default function ResumeSec({ classN }) {
                     ))}
                 </ol>
             </section>
+
+            {/* Conditionally render OpenPreview for previewed file inside preview overlay */}
+            {previewFile && (
+                <div className="preview-overlay">
+                    <div className="preview-modal">
+                        <button onClick={() => setPreviewFile(null)} className="close-button">Close</button>
+                        <OpenPreview file={previewFile} />
+                    </div>
+                </div>
+            )}
         </article>
     );
 }

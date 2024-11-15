@@ -69,7 +69,7 @@ export default function Aside(){
         <ul className="social-list">
             <li className="social-item">
             <a
-                href=" "
+                href="https://www.linkedin.com/in/khalid-ali-864251294"
                 className="social-link"
                 target="_blank"
             >

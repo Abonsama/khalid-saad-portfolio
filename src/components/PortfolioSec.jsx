@@ -66,18 +66,16 @@ export default function PortfolioSec({ classN }) {
                                 Close Preview
                             </button>
                             <button 
-    className="download-button" 
-    onClick={() => {
-        const link = document.createElement('a');
-        link.href = downloadFile;
-        // Decode URI component and replace %20 with spaces
-        link.download = decodeURIComponent(downloadFile.split('/').pop());
-        link.click();
-    }}
->
-    Download
-</button>
-
+                                className="download-button" 
+                                onClick={() => {
+                                    const link = document.createElement('a');
+                                    link.href = downloadFile;
+                                    link.download = decodeURIComponent(downloadFile.split('/').pop());
+                                    link.click();
+                                }}
+                            >
+                                Download
+                            </button>
                         </div>
                     </div>
                 </div>
